@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_PaisesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pais" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Capital" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Poblacion" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Function Name="pr_ConsultarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pr_InsertarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Pais" Type="varchar" Mode="In" />
+          <Parameter Name="Capital" Type="varchar" Mode="In" />
+          <Parameter Name="Poblacion" Type="bigint" Mode="In" />
+          <Parameter Name="Resultado" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="BD_PaisesModelStoreContainer">
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_PaisesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Poblacion" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BD_PaisesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Paises" EntityType="Self.Paises" />
+          <FunctionImport Name="pr_ConsultarPais" ReturnType="Collection(BD_PaisesModel.pr_ConsultarPais_Result)" />
+          <FunctionImport Name="pr_InsertarPais">
+            <Parameter Name="Pais" Mode="In" Type="String" />
+            <Parameter Name="Capital" Mode="In" Type="String" />
+            <Parameter Name="Poblacion" Mode="In" Type="Int64" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="pr_ConsultarPais_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Pais" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Capital" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="Poblacion" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_PaisesModelStoreContainer" CdmEntityContainer="BD_PaisesEntities">
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="BD_PaisesModel.Paises">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pr_ConsultarPais" FunctionName="BD_PaisesModel.Store.pr_ConsultarPais">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_PaisesModel.pr_ConsultarPais_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Poblacion" ColumnName="Poblacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pr_InsertarPais" FunctionName="BD_PaisesModel.Store.pr_InsertarPais" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

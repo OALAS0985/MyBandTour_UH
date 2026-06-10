@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav>
+    <h5 style=" text-align: right;">Bienvenido/a</h5>
+    <h5 style=" text-align: right;" onclick="CerrarSesion()">Cerrar sesion</h5>
+</nav>
+<img src="~/Images/a1.jpg" alt="Descripción de la imagen" class="img-responsive" />
+
+<div>
+    <br />
+    <br />
+    <button class="button">@Html.ActionLink("Eliminar conciertos ", "Eliminar", "Conciertos", new { area = "" }, new { @class = "nav-link" }) </button>
+    <br />
+    <button class="button">@Html.ActionLink("Agregar Conciertos ", "Agregar", "Conciertos", new { area = "" }, new { @class = "nav-link" }) </button>
+    <br />
+</div>
+<div>
+    <h3>Buscar concierto</h3>
+    <label for="nombreConcierto">Nombre de la Banda:</label>
+    <input type="text" id="nombre" placeholder="Ingrese el nombre">
+    <button onclick="EjecutarBuscaConciertos()" class="button">Buscar</button>
+    <br />
+    <br />
+</div>
+<h2>Lista de Conciertos</h2>
+<style>
+    h2, h1, div {
+        text-align: center;
+    }
+</style>
+<button class="button" onclick="EjecutarConsultaConciertos();">Lista De conciertos</button>
+
+<table class="table table-bordered">
+    <thead id="divLogin">
+        <tr>
+            <th>Id</th>
+            <th>Código</th>
+            <th>Banda</th>
+            <th>Genero</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>País</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody id="bodyTabla">
+    </tbody>
+</table>
+
+
+
+
+

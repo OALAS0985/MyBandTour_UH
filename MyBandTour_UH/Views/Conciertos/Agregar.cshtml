@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav>
+    <h5 style=" text-align: right;">Bienvenido/a</h5>
+    <h5 style=" text-align: right;" onclick="CerrarSesion()" id="tt">Cerrar sesion</h5>
+
+</nav>
+<img style="display: block; margin: 0 auto; width: 300px;" src="~/Images/a1.jpg" alt="Descripción de la imagen" class="img-responsive" />
+<button class="button">@Html.ActionLink("Regresar ", "Dashboard", "Conciertos", new { area = "" }, new { @class = "nav-link" }) </button>
+<br />
+    <h4>Agregar Conciertos</h4>
+    <br />
+
+    <input type="text" id="txtCodigo" placeholder="Código de concierto" />
+    <br />
+    <br />
+    <input type="text" id="txtBanda" placeholder="Nombre de la banda" />
+    <br />
+    <br />
+    <input type="text" id="txtGenero" placeholder="Género " />
+    <br />
+    <br />
+    <input type="date" id="txtFecha" placeholder="Fecha del concierto " />
+    <br />
+    <br />
+    <input type="time" id="txtHora" placeholder=" Hora " />
+    <br />
+    <br />
+    <input type="text" id="txtPais" placeholder="País " />
+    <br />
+    <br />
+    <input type="text" id="txtDireccion" placeholder="Direccion " />
+    <br />
+    <br />
+    <button class="button" onclick="CrearConcierto()">Crear Concierto</button>
